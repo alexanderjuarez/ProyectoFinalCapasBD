@@ -7,23 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DAL
+namespace MODELS
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class tipoLogin
+    public partial class TipoP
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tipoLogin()
+        public TipoP()
         {
-            this.IngresoUsuarios = new HashSet<IngresoUsuarios>();
+            this.Producto = new HashSet<Producto>();
         }
     
-        public int tlID { get; set; }
-        public string nombreTipoL { get; set; }
+        public int tipopID { get; set; }
+        public string NombreTP { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<IngresoUsuarios> IngresoUsuarios { get; set; }
+        public virtual ICollection<Producto> Producto { get; set; }
     }
 }

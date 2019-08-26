@@ -7,26 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DAL
+namespace MODELS
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Empleado
+    public partial class tipoLogin
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Empleado()
+        public tipoLogin()
         {
-            this.Factura = new HashSet<Factura>();
+            this.IngresoUsuarios = new HashSet<IngresoUsuarios>();
         }
     
-        public int empleadoID { get; set; }
-        public string nombreEmpleado { get; set; }
-        public string apellidoEmpleado { get; set; }
-        public string direccionEmpleado { get; set; }
-        public int telefonoEmpleado { get; set; }
+        public int tlID { get; set; }
+        public string nombreTipoL { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Factura> Factura { get; set; }
+        public virtual ICollection<IngresoUsuarios> IngresoUsuarios { get; set; }
     }
 }
