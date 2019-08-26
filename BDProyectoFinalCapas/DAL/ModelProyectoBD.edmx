@@ -1,0 +1,701 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProyectoBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="clienteID" />
+          </Key>
+          <Property Name="clienteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreCliente" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="apellidoCliente" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NIT" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="DetalleFactura">
+          <Key>
+            <PropertyRef Name="dfID" />
+            <PropertyRef Name="facturaID" />
+            <PropertyRef Name="productoID" />
+          </Key>
+          <Property Name="dfID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="facturaID" Type="int" Nullable="false" />
+          <Property Name="productoID" Type="int" Nullable="false" />
+          <Property Name="cantidadDF" Type="int" Nullable="false" />
+          <Property Name="subtotal" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetallePago">
+          <Key>
+            <PropertyRef Name="dpID" />
+          </Key>
+          <Property Name="dpID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="facturaID" Type="int" />
+          <Property Name="Efectivo" Type="float" Nullable="false" />
+          <Property Name="Tarjeta" Type="float" Nullable="false" />
+          <Property Name="Cheque" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="empleadoID" />
+          </Key>
+          <Property Name="empleadoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreEmpleado" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="apellidoEmpleado" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="direccionEmpleado" Type="nvarchar" MaxLength="100" />
+          <Property Name="telefonoEmpleado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Factura">
+          <Key>
+            <PropertyRef Name="facturaID" />
+          </Key>
+          <Property Name="facturaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="letraSerie" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="fechaFactura" Type="date" Nullable="false" />
+          <Property Name="clienteID" Type="int" />
+          <Property Name="empleadoID" Type="int" />
+          <Property Name="totalFactura" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IngresoUsuarios">
+          <Key>
+            <PropertyRef Name="usuarioID" />
+          </Key>
+          <Property Name="usuarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Contraseña" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="tlID" Type="int" />
+        </EntityType>
+        <EntityType Name="Presentacion">
+          <Key>
+            <PropertyRef Name="PresentacionID" />
+          </Key>
+          <Property Name="PresentacionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombrePres" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="productoID" />
+          </Key>
+          <Property Name="productoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreProducto" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PrecioVenta" Type="float" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="100" />
+          <Property Name="descuentoProducto" Type="float" />
+          <Property Name="existenciaProducto" Type="int" Nullable="false" />
+          <Property Name="tipopID" Type="int" />
+          <Property Name="PresentacionID" Type="int" />
+          <Property Name="proveedorID" Type="int" />
+        </EntityType>
+        <EntityType Name="Proveedor">
+          <Key>
+            <PropertyRef Name="proveedorID" />
+          </Key>
+          <Property Name="proveedorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreProveedor" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="direccionProveedor" Type="nvarchar" MaxLength="200" />
+          <Property Name="telefonoProveedor" Type="int" Nullable="false" />
+          <Property Name="correoProveedor" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tipoLogin">
+          <Key>
+            <PropertyRef Name="tlID" />
+          </Key>
+          <Property Name="tlID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreTipoL" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoP">
+          <Key>
+            <PropertyRef Name="tipopID" />
+          </Key>
+          <Property Name="tipopID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreTP" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="Relationship1">
+          <End Role="TipoP" Type="Self.TipoP" Multiplicity="0..1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoP">
+              <PropertyRef Name="tipopID" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="tipopID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship10">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="0..1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="proveedorID" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="proveedorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship14">
+          <End Role="Factura" Type="Self.Factura" Multiplicity="0..1" />
+          <End Role="DetallePago" Type="Self.DetallePago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Factura">
+              <PropertyRef Name="facturaID" />
+            </Principal>
+            <Dependent Role="DetallePago">
+              <PropertyRef Name="facturaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship15">
+          <End Role="tipoLogin" Type="Self.tipoLogin" Multiplicity="0..1" />
+          <End Role="IngresoUsuarios" Type="Self.IngresoUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoLogin">
+              <PropertyRef Name="tlID" />
+            </Principal>
+            <Dependent Role="IngresoUsuarios">
+              <PropertyRef Name="tlID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship2">
+          <End Role="Presentacion" Type="Self.Presentacion" Multiplicity="0..1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Presentacion">
+              <PropertyRef Name="PresentacionID" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="PresentacionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship5">
+          <End Role="Factura" Type="Self.Factura" Multiplicity="1" />
+          <End Role="DetalleFactura" Type="Self.DetalleFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Factura">
+              <PropertyRef Name="facturaID" />
+            </Principal>
+            <Dependent Role="DetalleFactura">
+              <PropertyRef Name="facturaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship6">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="DetalleFactura" Type="Self.DetalleFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="productoID" />
+            </Principal>
+            <Dependent Role="DetalleFactura">
+              <PropertyRef Name="productoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship7">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="clienteID" />
+            </Principal>
+            <Dependent Role="Factura">
+              <PropertyRef Name="clienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship8">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="empleadoID" />
+            </Principal>
+            <Dependent Role="Factura">
+              <PropertyRef Name="empleadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProyectoBDModelStoreContainer">
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetalleFactura" EntityType="Self.DetalleFactura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetallePago" EntityType="Self.DetallePago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Factura" EntityType="Self.Factura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IngresoUsuarios" EntityType="Self.IngresoUsuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Presentacion" EntityType="Self.Presentacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proveedor" EntityType="Self.Proveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipoLogin" EntityType="Self.tipoLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoP" EntityType="Self.TipoP" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Relationship1" Association="Self.Relationship1">
+            <End Role="TipoP" EntitySet="TipoP" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship10" Association="Self.Relationship10">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship14" Association="Self.Relationship14">
+            <End Role="Factura" EntitySet="Factura" />
+            <End Role="DetallePago" EntitySet="DetallePago" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship15" Association="Self.Relationship15">
+            <End Role="tipoLogin" EntitySet="tipoLogin" />
+            <End Role="IngresoUsuarios" EntitySet="IngresoUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship2" Association="Self.Relationship2">
+            <End Role="Presentacion" EntitySet="Presentacion" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship5" Association="Self.Relationship5">
+            <End Role="Factura" EntitySet="Factura" />
+            <End Role="DetalleFactura" EntitySet="DetalleFactura" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship6" Association="Self.Relationship6">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="DetalleFactura" EntitySet="DetalleFactura" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship7" Association="Self.Relationship7">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Factura" EntitySet="Factura" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship8" Association="Self.Relationship8">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Factura" EntitySet="Factura" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProyectoBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="clienteID" />
+          </Key>
+          <Property Name="clienteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreCliente" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apellidoCliente" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NIT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Factura" Relationship="Self.Relationship7" FromRole="Cliente" ToRole="Factura" />
+        </EntityType>
+        <EntityType Name="DetalleFactura">
+          <Key>
+            <PropertyRef Name="dfID" />
+            <PropertyRef Name="facturaID" />
+            <PropertyRef Name="productoID" />
+          </Key>
+          <Property Name="dfID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="facturaID" Type="Int32" Nullable="false" />
+          <Property Name="productoID" Type="Int32" Nullable="false" />
+          <Property Name="cantidadDF" Type="Int32" Nullable="false" />
+          <Property Name="subtotal" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Factura" Relationship="Self.Relationship5" FromRole="DetalleFactura" ToRole="Factura" />
+          <NavigationProperty Name="Producto" Relationship="Self.Relationship6" FromRole="DetalleFactura" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="DetallePago">
+          <Key>
+            <PropertyRef Name="dpID" />
+          </Key>
+          <Property Name="dpID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="facturaID" Type="Int32" />
+          <Property Name="Efectivo" Type="Double" Nullable="false" />
+          <Property Name="Tarjeta" Type="Double" Nullable="false" />
+          <Property Name="Cheque" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Factura" Relationship="Self.Relationship14" FromRole="DetallePago" ToRole="Factura" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="empleadoID" />
+          </Key>
+          <Property Name="empleadoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreEmpleado" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apellidoEmpleado" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="direccionEmpleado" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="telefonoEmpleado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Factura" Relationship="Self.Relationship8" FromRole="Empleado" ToRole="Factura" />
+        </EntityType>
+        <EntityType Name="Factura">
+          <Key>
+            <PropertyRef Name="facturaID" />
+          </Key>
+          <Property Name="facturaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="letraSerie" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="fechaFactura" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="clienteID" Type="Int32" />
+          <Property Name="empleadoID" Type="Int32" />
+          <Property Name="totalFactura" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.Relationship7" FromRole="Factura" ToRole="Cliente" />
+          <NavigationProperty Name="DetalleFactura" Relationship="Self.Relationship5" FromRole="Factura" ToRole="DetalleFactura" />
+          <NavigationProperty Name="DetallePago" Relationship="Self.Relationship14" FromRole="Factura" ToRole="DetallePago" />
+          <NavigationProperty Name="Empleado" Relationship="Self.Relationship8" FromRole="Factura" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="IngresoUsuarios">
+          <Key>
+            <PropertyRef Name="usuarioID" />
+          </Key>
+          <Property Name="usuarioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Contraseña" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tlID" Type="Int32" />
+          <NavigationProperty Name="tipoLogin" Relationship="Self.Relationship15" FromRole="IngresoUsuarios" ToRole="tipoLogin" />
+        </EntityType>
+        <EntityType Name="Presentacion">
+          <Key>
+            <PropertyRef Name="PresentacionID" />
+          </Key>
+          <Property Name="PresentacionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombrePres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Producto" Relationship="Self.Relationship2" FromRole="Presentacion" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="productoID" />
+          </Key>
+          <Property Name="productoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreProducto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrecioVenta" Type="Double" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="descuentoProducto" Type="Double" />
+          <Property Name="existenciaProducto" Type="Int32" Nullable="false" />
+          <Property Name="tipopID" Type="Int32" />
+          <Property Name="PresentacionID" Type="Int32" />
+          <Property Name="proveedorID" Type="Int32" />
+          <NavigationProperty Name="DetalleFactura" Relationship="Self.Relationship6" FromRole="Producto" ToRole="DetalleFactura" />
+          <NavigationProperty Name="Presentacion" Relationship="Self.Relationship2" FromRole="Producto" ToRole="Presentacion" />
+          <NavigationProperty Name="TipoP" Relationship="Self.Relationship1" FromRole="Producto" ToRole="TipoP" />
+          <NavigationProperty Name="Proveedor" Relationship="Self.Relationship10" FromRole="Producto" ToRole="Proveedor" />
+        </EntityType>
+        <EntityType Name="Proveedor">
+          <Key>
+            <PropertyRef Name="proveedorID" />
+          </Key>
+          <Property Name="proveedorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreProveedor" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="direccionProveedor" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="telefonoProveedor" Type="Int32" Nullable="false" />
+          <Property Name="correoProveedor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Producto" Relationship="Self.Relationship10" FromRole="Proveedor" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="tipoLogin">
+          <Key>
+            <PropertyRef Name="tlID" />
+          </Key>
+          <Property Name="tlID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreTipoL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="IngresoUsuarios" Relationship="Self.Relationship15" FromRole="tipoLogin" ToRole="IngresoUsuarios" />
+        </EntityType>
+        <EntityType Name="TipoP">
+          <Key>
+            <PropertyRef Name="tipopID" />
+          </Key>
+          <Property Name="tipopID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreTP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Producto" Relationship="Self.Relationship1" FromRole="TipoP" ToRole="Producto" />
+        </EntityType>
+        <Association Name="Relationship7">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="clienteID" />
+            </Principal>
+            <Dependent Role="Factura">
+              <PropertyRef Name="clienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship5">
+          <End Role="Factura" Type="Self.Factura" Multiplicity="1" />
+          <End Role="DetalleFactura" Type="Self.DetalleFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Factura">
+              <PropertyRef Name="facturaID" />
+            </Principal>
+            <Dependent Role="DetalleFactura">
+              <PropertyRef Name="facturaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship6">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="DetalleFactura" Type="Self.DetalleFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="productoID" />
+            </Principal>
+            <Dependent Role="DetalleFactura">
+              <PropertyRef Name="productoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship14">
+          <End Role="Factura" Type="Self.Factura" Multiplicity="0..1" />
+          <End Role="DetallePago" Type="Self.DetallePago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Factura">
+              <PropertyRef Name="facturaID" />
+            </Principal>
+            <Dependent Role="DetallePago">
+              <PropertyRef Name="facturaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship8">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="empleadoID" />
+            </Principal>
+            <Dependent Role="Factura">
+              <PropertyRef Name="empleadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship15">
+          <End Role="tipoLogin" Type="Self.tipoLogin" Multiplicity="0..1" />
+          <End Role="IngresoUsuarios" Type="Self.IngresoUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoLogin">
+              <PropertyRef Name="tlID" />
+            </Principal>
+            <Dependent Role="IngresoUsuarios">
+              <PropertyRef Name="tlID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship2">
+          <End Role="Presentacion" Type="Self.Presentacion" Multiplicity="0..1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Presentacion">
+              <PropertyRef Name="PresentacionID" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="PresentacionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship1">
+          <End Role="TipoP" Type="Self.TipoP" Multiplicity="0..1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoP">
+              <PropertyRef Name="tipopID" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="tipopID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship10">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="0..1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="proveedorID" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="proveedorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProyectoBDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="DetalleFactura" EntityType="Self.DetalleFactura" />
+          <EntitySet Name="DetallePago" EntityType="Self.DetallePago" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" />
+          <EntitySet Name="Factura" EntityType="Self.Factura" />
+          <EntitySet Name="IngresoUsuarios" EntityType="Self.IngresoUsuarios" />
+          <EntitySet Name="Presentacion" EntityType="Self.Presentacion" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" />
+          <EntitySet Name="Proveedor" EntityType="Self.Proveedor" />
+          <EntitySet Name="tipoLogin" EntityType="Self.tipoLogin" />
+          <EntitySet Name="TipoP" EntityType="Self.TipoP" />
+          <AssociationSet Name="Relationship7" Association="Self.Relationship7">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Factura" EntitySet="Factura" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship5" Association="Self.Relationship5">
+            <End Role="Factura" EntitySet="Factura" />
+            <End Role="DetalleFactura" EntitySet="DetalleFactura" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship6" Association="Self.Relationship6">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="DetalleFactura" EntitySet="DetalleFactura" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship14" Association="Self.Relationship14">
+            <End Role="Factura" EntitySet="Factura" />
+            <End Role="DetallePago" EntitySet="DetallePago" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship8" Association="Self.Relationship8">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Factura" EntitySet="Factura" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship15" Association="Self.Relationship15">
+            <End Role="tipoLogin" EntitySet="tipoLogin" />
+            <End Role="IngresoUsuarios" EntitySet="IngresoUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship2" Association="Self.Relationship2">
+            <End Role="Presentacion" EntitySet="Presentacion" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship1" Association="Self.Relationship1">
+            <End Role="TipoP" EntitySet="TipoP" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship10" Association="Self.Relationship10">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProyectoBDModelStoreContainer" CdmEntityContainer="ProyectoBDEntities">
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="ProyectoBDModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="clienteID" ColumnName="clienteID" />
+                <ScalarProperty Name="nombreCliente" ColumnName="nombreCliente" />
+                <ScalarProperty Name="apellidoCliente" ColumnName="apellidoCliente" />
+                <ScalarProperty Name="NIT" ColumnName="NIT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleFactura">
+            <EntityTypeMapping TypeName="ProyectoBDModel.DetalleFactura">
+              <MappingFragment StoreEntitySet="DetalleFactura">
+                <ScalarProperty Name="dfID" ColumnName="dfID" />
+                <ScalarProperty Name="facturaID" ColumnName="facturaID" />
+                <ScalarProperty Name="productoID" ColumnName="productoID" />
+                <ScalarProperty Name="cantidadDF" ColumnName="cantidadDF" />
+                <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetallePago">
+            <EntityTypeMapping TypeName="ProyectoBDModel.DetallePago">
+              <MappingFragment StoreEntitySet="DetallePago">
+                <ScalarProperty Name="dpID" ColumnName="dpID" />
+                <ScalarProperty Name="facturaID" ColumnName="facturaID" />
+                <ScalarProperty Name="Efectivo" ColumnName="Efectivo" />
+                <ScalarProperty Name="Tarjeta" ColumnName="Tarjeta" />
+                <ScalarProperty Name="Cheque" ColumnName="Cheque" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleado">
+            <EntityTypeMapping TypeName="ProyectoBDModel.Empleado">
+              <MappingFragment StoreEntitySet="Empleado">
+                <ScalarProperty Name="empleadoID" ColumnName="empleadoID" />
+                <ScalarProperty Name="nombreEmpleado" ColumnName="nombreEmpleado" />
+                <ScalarProperty Name="apellidoEmpleado" ColumnName="apellidoEmpleado" />
+                <ScalarProperty Name="direccionEmpleado" ColumnName="direccionEmpleado" />
+                <ScalarProperty Name="telefonoEmpleado" ColumnName="telefonoEmpleado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Factura">
+            <EntityTypeMapping TypeName="ProyectoBDModel.Factura">
+              <MappingFragment StoreEntitySet="Factura">
+                <ScalarProperty Name="facturaID" ColumnName="facturaID" />
+                <ScalarProperty Name="letraSerie" ColumnName="letraSerie" />
+                <ScalarProperty Name="fechaFactura" ColumnName="fechaFactura" />
+                <ScalarProperty Name="clienteID" ColumnName="clienteID" />
+                <ScalarProperty Name="empleadoID" ColumnName="empleadoID" />
+                <ScalarProperty Name="totalFactura" ColumnName="totalFactura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IngresoUsuarios">
+            <EntityTypeMapping TypeName="ProyectoBDModel.IngresoUsuarios">
+              <MappingFragment StoreEntitySet="IngresoUsuarios">
+                <ScalarProperty Name="usuarioID" ColumnName="usuarioID" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+                <ScalarProperty Name="tlID" ColumnName="tlID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Presentacion">
+            <EntityTypeMapping TypeName="ProyectoBDModel.Presentacion">
+              <MappingFragment StoreEntitySet="Presentacion">
+                <ScalarProperty Name="PresentacionID" ColumnName="PresentacionID" />
+                <ScalarProperty Name="NombrePres" ColumnName="NombrePres" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producto">
+            <EntityTypeMapping TypeName="ProyectoBDModel.Producto">
+              <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="productoID" ColumnName="productoID" />
+                <ScalarProperty Name="nombreProducto" ColumnName="nombreProducto" />
+                <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="descuentoProducto" ColumnName="descuentoProducto" />
+                <ScalarProperty Name="existenciaProducto" ColumnName="existenciaProducto" />
+                <ScalarProperty Name="tipopID" ColumnName="tipopID" />
+                <ScalarProperty Name="PresentacionID" ColumnName="PresentacionID" />
+                <ScalarProperty Name="proveedorID" ColumnName="proveedorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proveedor">
+            <EntityTypeMapping TypeName="ProyectoBDModel.Proveedor">
+              <MappingFragment StoreEntitySet="Proveedor">
+                <ScalarProperty Name="proveedorID" ColumnName="proveedorID" />
+                <ScalarProperty Name="nombreProveedor" ColumnName="nombreProveedor" />
+                <ScalarProperty Name="direccionProveedor" ColumnName="direccionProveedor" />
+                <ScalarProperty Name="telefonoProveedor" ColumnName="telefonoProveedor" />
+                <ScalarProperty Name="correoProveedor" ColumnName="correoProveedor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipoLogin">
+            <EntityTypeMapping TypeName="ProyectoBDModel.tipoLogin">
+              <MappingFragment StoreEntitySet="tipoLogin">
+                <ScalarProperty Name="tlID" ColumnName="tlID" />
+                <ScalarProperty Name="nombreTipoL" ColumnName="nombreTipoL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoP">
+            <EntityTypeMapping TypeName="ProyectoBDModel.TipoP">
+              <MappingFragment StoreEntitySet="TipoP">
+                <ScalarProperty Name="tipopID" ColumnName="tipopID" />
+                <ScalarProperty Name="NombreTP" ColumnName="NombreTP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

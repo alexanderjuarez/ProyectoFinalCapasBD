@@ -31,8 +31,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,13 +50,89 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cliente.cs">
+      <DependentUpon>ModelProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleFactura.cs">
+      <DependentUpon>ModelProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetallePago.cs">
+      <DependentUpon>ModelProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Empleado.cs">
+      <DependentUpon>ModelProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Factura.cs">
+      <DependentUpon>ModelProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IngresoUsuarios.cs">
+      <DependentUpon>ModelProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelProyectoBD.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelProyectoBD.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelProyectoBD.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelProyectoBD.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelProyectoBD.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion.cs">
+      <DependentUpon>ModelProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Producto.cs">
+      <DependentUpon>ModelProyectoBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proveedor.cs">
+      <DependentUpon>ModelProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tipoLogin.cs">
+      <DependentUpon>ModelProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoP.cs">
+      <DependentUpon>ModelProyectoBD.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MODELS\MODELS.csproj">
-      <Project>{cacc2c3e-262b-4c6c-9494-76797b1793fc}</Project>
+      <Project>{900bb25d-bec9-4a8a-91e1-1cf2293d464f}</Project>
       <Name>MODELS</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="ModelProyectoBD.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelProyectoBD.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="ModelProyectoBD.edmx.diagram">
+      <DependentUpon>ModelProyectoBD.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModelProyectoBD.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelProyectoBD.Context.cs</LastGenOutput>
+      <DependentUpon>ModelProyectoBD.edmx</DependentUpon>
+    </Content>
+    <Content Include="ModelProyectoBD.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelProyectoBD.edmx</DependentUpon>
+      <LastGenOutput>ModelProyectoBD.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

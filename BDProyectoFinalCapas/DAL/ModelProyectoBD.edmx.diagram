@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8f2a449caf554e41b56f18eb598b9879" Name="Diagram1">
+        <EntityTypeShape EntityType="ProyectoBDModel.Cliente" Width="1.5" PointX="3.625" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBDModel.DetalleFactura" Width="1.5" PointX="8.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBDModel.DetallePago" Width="1.5" PointX="7.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBDModel.Empleado" Width="1.5" PointX="1.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBDModel.Factura" Width="1.5" PointX="7.875" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBDModel.IngresoUsuarios" Width="1.5" PointX="7.375" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBDModel.Presentacion" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBDModel.Producto" Width="1.5" PointX="2.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBDModel.Proveedor" Width="1.5" PointX="0.5" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBDModel.tipoLogin" Width="1.5" PointX="4.625" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBDModel.TipoP" Width="1.5" PointX="2.125" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="ProyectoBDModel.Relationship7" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBDModel.Relationship5" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBDModel.Relationship6" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBDModel.Relationship14" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBDModel.Relationship8" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBDModel.Relationship15" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBDModel.Relationship2" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBDModel.Relationship1" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBDModel.Relationship10" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

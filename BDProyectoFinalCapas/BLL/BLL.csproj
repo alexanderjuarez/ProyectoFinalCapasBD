@@ -49,7 +49,7 @@
       <Name>DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\MODELS\MODELS.csproj">
-      <Project>{cacc2c3e-262b-4c6c-9494-76797b1793fc}</Project>
+      <Project>{900bb25d-bec9-4a8a-91e1-1cf2293d464f}</Project>
       <Name>MODELS</Name>
     </ProjectReference>
   </ItemGroup>
