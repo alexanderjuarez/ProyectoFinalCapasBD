@@ -23,5 +23,48 @@ namespace UI
         {
             InitializeComponent();
         }
+
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonOpenMenu.Visibility = Visibility.Collapsed;
+            ButtonCloseMenu.Visibility = Visibility.Visible;
+        }
+
+        private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonOpenMenu.Visibility = Visibility.Visible;
+            ButtonCloseMenu.Visibility = Visibility.Collapsed;
+        }
+        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int Item = ListViewMenu.SelectedIndex;
+
+            switch (Item)
+            {
+                case 1:
+                    GridMain.Children.Add(new Mantenimientos.UserControlClientes());
+                    break;
+
+                case 2:
+                    GridMain.Children.Add(new Mantenimientos.UserControlProveedores());
+                    break;
+
+                case 3:
+                    GridMain.Children.Add(new Mantenimientos.UserControlTipoProducto());
+                    break;
+
+
+
+                default:
+                    break;
+            }
+        }
+
     }
 }
+

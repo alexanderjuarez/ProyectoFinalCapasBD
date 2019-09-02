@@ -13,23 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace UI
+namespace UI.Mantenimientos
 {
     /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
+    /// Lógica de interacción para UserControlProveedores.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UserControlProveedores : UserControl
     {
-        public MainWindow()
+        public UserControlProveedores()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var newForm = new Menu(); //crea el nuevo formulario
-            newForm.Show(); //enseña el nuevo formulario
-            this.Close(); //cierra el formulario actualmente abierto*/
         }
     }
 }
