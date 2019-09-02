@@ -16,7 +16,7 @@
                     </Grid.Effect>
 
                     <StackPanel Width="1000">
-                        <TextBlock Margin="10" FontFamily="Showcard Gothic" FontSize="20" Text="Clientes" Foreground="Black" Background="#428e92"/>
+                        <TextBlock Margin="10" FontFamily="Showcard Gothic" FontSize="20" Text="Clientes" Foreground="White" Background="#428e92"/>
 
                     </StackPanel>
                     <Rectangle HorizontalAlignment="Center" Height="146" Margin="24,41,26,0" Stroke="#006064" VerticalAlignment="Top" Width="950"  />

@@ -117,8 +117,8 @@
                         </TransformGroup>
                     </ListViewItem.RenderTransform>
                     <StackPanel Orientation="Horizontal" Margin="10 0">
-                        <materialDesign:PackIcon Kind="Account" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                        <TextBlock Text="Clientes" Margin="10" VerticalAlignment="Center"/>
+                        <materialDesign:PackIcon Kind="Account" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="White"/>
+                        <TextBlock Text="Clientes" Margin="10" VerticalAlignment="Center" Foreground="White" FontWeight="Bold"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem x:Name="listViewItem2" Height="60" RenderTransformOrigin="0.5,0.5">
@@ -131,8 +131,8 @@
                         </TransformGroup>
                     </ListViewItem.RenderTransform>
                     <StackPanel Orientation="Horizontal" Margin="10 0">
-                        <materialDesign:PackIcon Kind="People" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                        <TextBlock Text="Proveedores" Margin="10" VerticalAlignment="Center"/>
+                        <materialDesign:PackIcon Kind="People" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="White"/>
+                        <TextBlock Text="Proveedores" Margin="10" VerticalAlignment="Center" Foreground="White" FontWeight="Bold"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem x:Name="listViewItem3" Height="60" RenderTransformOrigin="0.5,0.5">
@@ -145,8 +145,8 @@
                         </TransformGroup>
                     </ListViewItem.RenderTransform>
                     <StackPanel Orientation="Horizontal" Margin="10 0">
-                        <materialDesign:PackIcon Kind="Store" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                        <TextBlock Text="Tipo de Productos" Margin="10" VerticalAlignment="Center"/>
+                        <materialDesign:PackIcon Kind="Store" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="White"/>
+                        <TextBlock Text="Tipo de Productos" Margin="10" VerticalAlignment="Center" Foreground="White" FontWeight="Bold"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem x:Name="listViewItem4" Height="60" RenderTransformOrigin="0.5,0.5">
@@ -159,8 +159,8 @@
                         </TransformGroup>
                     </ListViewItem.RenderTransform>
                     <StackPanel Orientation="Horizontal" Margin="10 0">
-                        <materialDesign:PackIcon Kind="Sale" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                        <TextBlock Text="Productos" Margin="10" VerticalAlignment="Center"/>
+                        <materialDesign:PackIcon Kind="Sale" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="White"/>
+                        <TextBlock Text="Productos" Margin="10" VerticalAlignment="Center" Foreground="White" FontWeight="Bold"/>
                     </StackPanel>
                 </ListViewItem>
             </ListView>

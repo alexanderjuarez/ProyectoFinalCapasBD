@@ -17,7 +17,7 @@
                     </Grid.Effect>
 
                     <StackPanel Width="700">
-                        <TextBlock Margin="10" FontFamily="Showcard Gothic" FontSize="20" Text="Tipos de Producto" Foreground="Black" Background="#428e92"/>
+                        <TextBlock Margin="10" FontFamily="Showcard Gothic" FontSize="20" Text="Tipos de Producto" Foreground="White" Background="#428e92" Height="28"/>
 
                     </StackPanel>
                     <Rectangle HorizontalAlignment="Center" Height="146" Margin="24,41,26,0" Stroke="#006064" VerticalAlignment="Top" Width="950"  />
@@ -39,7 +39,7 @@
 
 
 
-                    <DataGrid x:Name="dataGrid1" ItemsSource="{Binding TipoPCollection}" Background="#4bacb8" HorizontalAlignment="Left" Height="222" Margin="470,234,0,0" VerticalAlignment="Top" Width="468" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" BorderBrush="#006064"/>
+                    <DataGrid x:Name="dataGrid1" ItemsSource="{Binding TipoPCollection}" Background="#4bacb8" HorizontalAlignment="Left" Height="222" Margin="470,234,0,0" VerticalAlignment="Top" Width="468" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" BorderBrush="#006064" Foreground="White"/>
 
                 </Grid>
 
