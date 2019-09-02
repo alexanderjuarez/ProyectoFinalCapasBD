@@ -31,5 +31,10 @@ namespace UI
             newForm.Show(); //enseña el nuevo formulario
             this.Close(); //cierra el formulario actualmente abierto*/
         }
+
+        private void ButtonCerrar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

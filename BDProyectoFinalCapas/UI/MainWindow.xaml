@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:UI"
         mc:Ignorable="d"
         
@@ -27,9 +27,7 @@
             <Grid>
                 <materialDesign:ColorZone Mode="PrimaryDark" Background="#006064">
                     <StackPanel HorizontalAlignment="Right">
-                        <Button x:Name="ButtonCerrar" Width="30" Height="30" materialDesign:ShadowAssist.ShadowDepth="Depth3" Background="#00363a" Padding="0" Click="ButtonCerrar_Click" BorderBrush="#00363a">
-                            <materialDesign:PackIcon Kind="WindowClose"/>
-                        </Button>
+                        <Button x:Name="ButtonCerrar" Width="30" Height="30"  Background="#00363a" Padding="0" Click="ButtonCerrar_Click" BorderBrush="#00363a"></Button>
                     </StackPanel>
                 </materialDesign:ColorZone>
             </Grid>
