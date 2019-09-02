@@ -25,5 +25,53 @@ namespace DAL
             return respuesta;
         }
 
+        public string Agregar(T NuevaEntidad)
+        {
+            string mensaje = "";
+            if (NuevaEntidad == null)
+                mensaje = "Erro: datos vacios";
+            else
+            {
+                using (contexto = new ProyectoBDEntities())
+                {
+                    var dbSet = contexto.Set<T>();
+                    dbSet.Add(NuevaEntidad);
+                    contexto.SaveChanges();
+                    mensaje = "Se ha gravado el nuevo registro";
+                }
+            }
+            return mensaje;
+
+        }//Fin del metodo agregar
+
+        public string Editar(T Entidad)
+        {
+            string mesaje = "";
+            if (Entidad == null)
+                mesaje = "Error: datos vacios";
+            else
+            {
+                using (contexto = new ProyectoBDEntities())
+                {
+                    var dbSet = contexto.Set<T>();
+                    dbSet.Attach(Entidad);
+                    contexto.Entry(Entidad).State = EntityState.Modified;
+                    contexto.SaveChanges();
+                }
+                mesaje = "Se ha editado la informacion";
+            }
+            return mesaje;
+        }//fin del metodo editar
+
+        public IQueryable<T> ListarTodoConFiltro(Expression<Func<T, bool>> filtro)
+        {
+            IQueryable<T> respuesta;
+            using (contexto = new ProyectoBDEntities())
+            {
+                DbQuery<T> query = contexto.Set<T>();
+                respuesta = query.Where(filtro).ToList().AsQueryable();
+            }
+            return respuesta;
+        }// fin del metodo ListarTodoConFiltro
     }
 }

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BLL;
+using MODELS;
 
 namespace UI.Mantenimientos
 {
@@ -23,6 +25,28 @@ namespace UI.Mantenimientos
         public UserControlTipoProducto()
         {
             InitializeComponent();
+        }
+
+        private void ButtonGuardar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonActualizar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonListar_Click(object sender, RoutedEventArgs e)
+        {
+            ClassTipoP list = new ClassTipoP();
+            dataGrid1.ItemsSource = list.MostrarTodo();
+            buttonActualizar.IsEnabled = true;
+        }
+
+        private void ButtonBuscar_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
