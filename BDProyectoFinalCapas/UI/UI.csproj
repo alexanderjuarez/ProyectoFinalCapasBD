@@ -73,12 +73,26 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Mantenimientos\UserControlClientes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Mantenimientos\UserControlTipoProducto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Menu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mantenimientos\UserControlClientes.xaml.cs">
+      <DependentUpon>UserControlClientes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimientos\UserControlTipoProducto.xaml.cs">
+      <DependentUpon>UserControlTipoProducto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
@@ -118,8 +132,6 @@
       <Name>MODELS</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mantenimientos\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

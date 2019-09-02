@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="UI.Mantenimientos.UserControlTipoProducto"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:UI.Mantenimientos"
+             mc:Ignorable="d" 
+            Height="auto" Width="auto">
+    <Grid>
+        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
+            <Grid>
+
+                <Grid Height="500" Width="700" Background="#FFF3F3F3" >
+                    <Grid.Effect>
+                        <DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" ShadowDepth="1"/>
+                    </Grid.Effect>
+
+                    <StackPanel Width="700">
+                        <TextBlock Margin="10" FontFamily="Showcard Gothic" FontSize="20" Text="Tipos de Producto" Foreground="Black" Background="#428e92"/>
+
+                    </StackPanel>
+                    <Rectangle HorizontalAlignment="Center" Height="146" Margin="24,41,26,0" Stroke="#006064" VerticalAlignment="Top" Width="650"  />
+                    <Label x:Name="labelTipoId" Content="Tipo Id" HorizontalAlignment="Left" Margin="59,65,0,0" VerticalAlignment="Top" Foreground="#00363a" FontWeight="Bold" FontFamily="Tahoma"/>
+                    <TextBox x:Name="TextTipoId" TabIndex="0" materialDesign:HintAssist.Hint="Codigo" BorderBrush="#00363a" materialDesign:HintAssist.Foreground="#00363a" Margin="128,60,508,411" Text="{Binding SelectedItem.TipoId, ElementName=dataGrid1, Mode=OneWay}" />
+                    <Label x:Name="labelNombreT" Content="Nombre del tipo de producto" HorizontalAlignment="Left" Margin="300,66,0,0" VerticalAlignment="Top" Foreground="#00363a" FontWeight="Bold" FontFamily="Tahoma"/>
+                    <TextBox x:Name="TextNombreTipo" TabIndex="1" materialDesign:HintAssist.Hint="Nombre" BorderBrush="#00363a" materialDesign:HintAssist.Foreground="#00363a" Height="30" Margin="518,60,35,410" Text="{Binding SelectedItem.NombreTP, ElementName=dataGrid1, Mode=OneWay}" />
+                    <Label x:Name="labelDescripcion" Content="Descripcion" HorizontalAlignment="Left" Margin="32,100,0,0" VerticalAlignment="Top" Foreground="#00363a" FontWeight="Bold" FontFamily="Tahoma"/>
+                    <TextBox x:Name="TextDescripcion" TabIndex="2" materialDesign:HintAssist.Hint="Descripcion" BorderBrush="#00363a" materialDesign:HintAssist.Foreground="#00363a" Height="30" Margin="128,95,470,375" Text="{Binding SelectedItem.Descripcion, ElementName=dataGrid1, Mode=OneWay}" />
+
+                    <Button x:Name="buttonGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="255,134,0,0" VerticalAlignment="Top" Width="87" Background="#00363a" BorderBrush="#00363a"/>
+                    <Button x:Name="buttonCancelar" Content="Cacelar" HorizontalAlignment="Left" Margin="365,134,0,0" VerticalAlignment="Top" Width="87" Background="#00363a" BorderBrush="#00363a"/>
+
+                    <Label x:Name="labelBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="40,234,0,0" VerticalAlignment="Top" RenderTransformOrigin="-7.158,-1.923" Width="50" Foreground="#00363a" FontWeight="Bold" FontFamily="Tahoma" Height="28"/>
+                    <TextBox x:Name="textBoxBuscar" HorizontalAlignment="Left" Height="28"  VerticalAlignment="Top" Width="166" Margin="102,231,0,0" materialDesign:HintAssist.Hint="Ingrese nombre" BorderBrush="#00363a" materialDesign:HintAssist.Foreground="#00363a"/>
+                    <Button x:Name="buttonBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="181,280,0,0" VerticalAlignment="Top" Width="87" Background="#00363a" BorderBrush="#00363a"/>
+                    <Button x:Name="buttonActualizar" Content="Actualizar" HorizontalAlignment="Left" Margin="569,134,0,0" VerticalAlignment="Top" Width="96" Background="#00363a" BorderBrush="#00363a"/>
+                    <Button x:Name="buttonListar" Content="Listar" HorizontalAlignment="Left" Margin="314,197,0,0" VerticalAlignment="Top" Width="87" Background="#00363a" BorderBrush="#00363a"/>
+
+
+
+                    <DataGrid x:Name="dataGrid1" ItemsSource="{Binding TipoPCollection}" Background="#4bacb8" HorizontalAlignment="Left" Height="211" Margin="315,234,0,0" VerticalAlignment="Top" Width="359" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" BorderBrush="#006064"/>
+
+                </Grid>
+
+            </Grid>
+        </materialDesign:TransitioningContent>
+    </Grid>
+</UserControl>

@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="UI.Mantenimientos.UserControlClientes"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+            Height="auto" Width="auto">
+    <Grid>
+        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
+            <Grid>
+
+                <Grid Height="500" Width="1000" Background="#FFF3F3F3" >
+                    <Grid.Effect>
+                        <DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" ShadowDepth="1"/>
+                    </Grid.Effect>
+
+                    <StackPanel Width="1000">
+                        <TextBlock Margin="10" FontFamily="Showcard Gothic" FontSize="20" Text="Clientes" Foreground="Black" Background="#428e92"/>
+
+                    </StackPanel>
+                    <Rectangle HorizontalAlignment="Center" Height="146" Margin="24,41,26,0" Stroke="#006064" VerticalAlignment="Top" Width="950"  />
+                    <Label x:Name="label1" Content="Cliente Id" HorizontalAlignment="Left" Margin="40,65,0,0" VerticalAlignment="Top" Foreground="#00363a" FontWeight="Bold" FontFamily="Tahoma"/>
+                    <TextBox x:Name="TextClienteId" TabIndex="0" materialDesign:HintAssist.Hint="codigo" BorderBrush="#00363a" materialDesign:HintAssist.Foreground="#00363a" Height="30" Margin="154,65,598,405" Text="{Binding SelectedItem.ClienteId, ElementName=dataGrid1, Mode=OneWay}" />
+                    <Label x:Name="label4" Content="NIT" HorizontalAlignment="Left" Margin="469,66,0,0" VerticalAlignment="Top" Foreground="#00363a" FontWeight="Bold" FontFamily="Tahoma"/>
+                    <TextBox x:Name="TextNIT" TabIndex="1" materialDesign:HintAssist.Hint="NIT" BorderBrush="#00363a" materialDesign:HintAssist.Foreground="#00363a" Height="30" Margin="518,60,234,410" Text="{Binding SelectedItem.nit, ElementName=dataGrid1, Mode=OneWay}" />
+                    <Label x:Name="label2" Content="Nombre Cliente" HorizontalAlignment="Left" Margin="40,100,0,0" VerticalAlignment="Top" Foreground="#00363a" FontWeight="Bold" FontFamily="Tahoma"/>
+                    <TextBox x:Name="TextNombreCliente" TabIndex="2" materialDesign:HintAssist.Hint="Nombre" BorderBrush="#00363a" materialDesign:HintAssist.Foreground="#00363a" Height="30" Margin="154,94,599,376" Text="{Binding SelectedItem.nombre, ElementName=dataGrid1, Mode=OneWay}" />
+                    <Label x:Name="label3" Content="Apellido Cliente" HorizontalAlignment="Left" Margin="40,135,0,0" VerticalAlignment="Top" Foreground="#00363a" FontWeight="Bold" FontFamily="Tahoma"/>
+                    <TextBox x:Name="TextApellidoCliente" TabIndex="3" materialDesign:HintAssist.Hint="Apellido" BorderBrush="#00363a" materialDesign:HintAssist.Foreground="#00363a" Height="30" Margin="154,129,599,341" Text="{Binding SelectedItem.apellido, ElementName=dataGrid1, Mode=OneWay}" />
+                    <Label x:Name="label5" Content="Teléfono 1" HorizontalAlignment="Left" Margin="428,100,0,0" VerticalAlignment="Top" Foreground="#00363a" FontWeight="Bold" FontFamily="Tahoma"/>
+                    <TextBox x:Name="TextTel1" TabIndex="4" materialDesign:HintAssist.Hint="teléfono 1" BorderBrush="#00363a" materialDesign:HintAssist.Foreground="#00363a" Height="30" Margin="518,94,234,376" Text="{Binding SelectedItem.telefono1, ElementName=dataGrid1, Mode=OneWay}" />
+                    <Button x:Name="buttonGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="831,58,0,0" VerticalAlignment="Top" Width="87" Background="#00363a" BorderBrush="#00363a"/>
+                    <Button x:Name="buttonCancelar" Content="Cacelar" HorizontalAlignment="Left" Margin="831,100,0,0" VerticalAlignment="Top" Width="87" Background="#00363a" BorderBrush="#00363a"/>
+
+
+                    <DataGrid x:Name="dataGrid1" ItemsSource="{Binding clientesCollection}" Background="#4bacb8" HorizontalAlignment="Left" Height="211" Margin="315,234,0,0" VerticalAlignment="Top" Width="659" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" BorderBrush="#006064"/>
+                    <Label x:Name="labelBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="40,234,0,0" VerticalAlignment="Top" RenderTransformOrigin="-7.158,-1.923" Width="50" Foreground="#00363a" FontWeight="Bold" FontFamily="Tahoma" Height="28"/>
+                    <TextBox x:Name="textBoxBuscar" HorizontalAlignment="Left" Height="28"  VerticalAlignment="Top" Width="166" Margin="102,231,0,0" materialDesign:HintAssist.Hint="Ingrese nombre" BorderBrush="#00363a" materialDesign:HintAssist.Foreground="#00363a"/>
+                    <Button x:Name="buttonBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="181,280,0,0" VerticalAlignment="Top" Width="87" Background="#00363a" BorderBrush="#00363a"/>
+                    <Button x:Name="buttonActualizar" Content="Actualizar" HorizontalAlignment="Left" Margin="831,138,0,0" VerticalAlignment="Top" Width="87" Background="#00363a" BorderBrush="#00363a"/>
+                    <Button x:Name="buttonListar" Content="Listar" HorizontalAlignment="Left" Margin="314,197,0,0" VerticalAlignment="Top" Width="87" Background="#00363a" BorderBrush="#00363a"/>
+
+                </Grid>
+
+            </Grid>
+        </materialDesign:TransitioningContent>
+    </Grid>
+</UserControl>
