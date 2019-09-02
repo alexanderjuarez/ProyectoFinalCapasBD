@@ -55,6 +55,7 @@ namespace UI
                     break;
 
                 case 3:
+
                     GridMain.Children.Add(new Mantenimientos.UserControlTipoProducto());
                     break;
 
