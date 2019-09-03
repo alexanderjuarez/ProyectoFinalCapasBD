@@ -84,6 +84,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Mantenimientos\UserControlPresentaciones.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Mantenimientos\UserControlProductos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Mantenimientos\UserControlProveedores.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -100,6 +108,12 @@
   <ItemGroup>
     <Compile Include="Mantenimientos\UserControlClientes.xaml.cs">
       <DependentUpon>UserControlClientes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimientos\UserControlPresentaciones.xaml.cs">
+      <DependentUpon>UserControlPresentaciones.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimientos\UserControlProductos.xaml.cs">
+      <DependentUpon>UserControlProductos.xaml</DependentUpon>
     </Compile>
     <Compile Include="Mantenimientos\UserControlProveedores.xaml.cs">
       <DependentUpon>UserControlProveedores.xaml</DependentUpon>

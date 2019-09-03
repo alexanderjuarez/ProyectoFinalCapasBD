@@ -61,8 +61,14 @@ namespace UI
                     GridPrincipal.Children.Add(new Mantenimientos.UserControlTipoProducto());
                     break;
 
-
-
+                case 4:
+                    GridPrincipal.Children.Clear();
+                    GridPrincipal.Children.Add(new Mantenimientos.UserControlProductos());
+                    break;
+                case 5:
+                    GridPrincipal.Children.Clear();
+                    GridPrincipal.Children.Add(new Mantenimientos.UserControlPresentaciones());
+                    break;
                 default:
                     break;
             }
