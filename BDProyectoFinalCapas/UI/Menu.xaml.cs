@@ -47,16 +47,18 @@ namespace UI
             switch (Item)
             {
                 case 1:
-                    GridMain.Children.Add(new Mantenimientos.UserControlClientes());
+                    GridPrincipal.Children.Clear();
+                    GridPrincipal.Children.Add(new Mantenimientos.UserControlClientes());
                     break;
 
                 case 2:
-                    GridMain.Children.Add(new Mantenimientos.UserControlProveedores());
+                    GridPrincipal.Children.Clear();
+                    GridPrincipal.Children.Add(new Mantenimientos.UserControlProveedores());
                     break;
 
                 case 3:
-
-                    GridMain.Children.Add(new Mantenimientos.UserControlTipoProducto());
+                    GridPrincipal.Children.Clear();
+                    GridPrincipal.Children.Add(new Mantenimientos.UserControlTipoProducto());
                     break;
 
 

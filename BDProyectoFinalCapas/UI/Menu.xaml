@@ -49,6 +49,11 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-250"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="listViewItem5">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-250"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-250"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.7" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="GridMain">
@@ -159,13 +164,28 @@
                         </TransformGroup>
                     </ListViewItem.RenderTransform>
                     <StackPanel Orientation="Horizontal" Margin="10 0">
-                        <materialDesign:PackIcon Kind="Sale" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="White"/>
+                        <materialDesign:PackIcon Kind="PackageVariant" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="White"/>
                         <TextBlock Text="Productos" Margin="10" VerticalAlignment="Center" Foreground="White" FontWeight="Bold"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem x:Name="listViewItem5" Height="60" RenderTransformOrigin="0.5,0.5">
+                    <ListViewItem.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ListViewItem.RenderTransform>
+                    <StackPanel Orientation="Horizontal" Margin="10 0">
+                        <materialDesign:PackIcon Kind="Package" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="White"/>
+                        <TextBlock Text="Presentaciones" Margin="10" VerticalAlignment="Center" Foreground="White" FontWeight="Bold"/>
                     </StackPanel>
                 </ListViewItem>
             </ListView>
         </StackPanel>
         <Grid x:Name="GridMain" Background="#FFFBFBFB" Width="1024" RenderTransformOrigin="0.5,0.5" Margin="0,4,-8,-4">
+
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -217,7 +237,9 @@
                 </Grid>
             </Grid>
             <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="50,40,0,0" TextWrapping="Wrap" Text="Tienda Pets" VerticalAlignment="Top" Foreground="Black" FontSize="30"/>
+            <Grid x:Name="GridPrincipal" HorizontalAlignment="Left" Height="497" Margin="50,85,0,0" VerticalAlignment="Top" Width="964" Background="#b2dfdb"/>
         </Grid>
+
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="40" HorizontalAlignment="Right" Margin="10">
             <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}">
                 <materialDesign:PackIcon Kind="Bell"/>

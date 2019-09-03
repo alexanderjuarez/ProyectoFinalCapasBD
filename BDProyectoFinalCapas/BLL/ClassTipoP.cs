@@ -17,28 +17,29 @@ namespace BLL
             return respuesta;
         }//fin del método MostrarTodo
 
-        public IEnumerable BUscarEstado(string nombre)
+        public IEnumerable BuscarTipo(string nombre)
         {
             RepositorioGenerico<TipoP> REP = new RepositorioGenerico<TipoP>();
             return REP.ListarTodoConFiltro(n => n.NombreTP == nombre);//puede funcionar para hacer el logeeo n.estado == nombre && n.estadocontrato==pasword (string nombre, contraseña)
         }
 
-        public string NuevoEstado(string nombre)
+        public string NuevoTipo(string nombre)
         {
             RepositorioGenerico<TipoP> Rep = new RepositorioGenerico<TipoP>();
             TipoP Nuevo = new TipoP();
             string respuesta = "";
             try
             {
-                IEnumerable busca = BUscarEstado(nombre);
+                IEnumerable busca = BuscarTipo(nombre);
                 if (busca.Cast<object>().Any())
-                    respuesta = "Error ya existe en el estado" + nombre;
+                    respuesta = "Error ya existe en el registro  " + nombre;
                 else
                 {
                     Nuevo.tipopID = Convert.ToInt32(Rep.ListarTodo().Max(m => m.tipopID) + 1);
                     Nuevo.NombreTP = nombre;
                     Rep.Agregar(Nuevo);
-                    respuesta = Rep.Agregar(Nuevo);
+                    respuesta = "Se agrego correctamente el registro";
+  
                 }
 
             }

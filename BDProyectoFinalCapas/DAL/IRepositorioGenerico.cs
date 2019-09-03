@@ -17,6 +17,5 @@ namespace DAL
 
         IQueryable<T> ListarTodoConFiltro(Expression<Func<T, bool>> filtro); ///sirve para realizar el metodo busqueda
 
-
     }
 }

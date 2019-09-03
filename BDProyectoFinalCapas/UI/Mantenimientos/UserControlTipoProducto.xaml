@@ -22,24 +22,22 @@
                     </StackPanel>
                     <Rectangle HorizontalAlignment="Center" Height="146" Margin="24,41,26,0" Stroke="#006064" VerticalAlignment="Top" Width="950"  />
                     <Label x:Name="labelTipoId" Content="Tipo Id" HorizontalAlignment="Left" Margin="59,65,0,0" VerticalAlignment="Top" Foreground="#00363a" FontWeight="Bold" FontFamily="Tahoma"/>
-                    <TextBox x:Name="TextTipoId" TabIndex="0" materialDesign:HintAssist.Hint="Codigo" BorderBrush="#00363a" materialDesign:HintAssist.Foreground="#00363a" Margin="128,60,767,411" Text="{Binding SelectedItem.TipoId, ElementName=dataGrid1, Mode=OneWay}" />
+                    <TextBox x:Name="TextTipoId" TabIndex="0" materialDesign:HintAssist.Hint="Codigo" BorderBrush="#00363a" materialDesign:HintAssist.Foreground="#00363a" Margin="128,60,850,411" Text="{Binding SelectedItem.tipopID, ElementName=dataGrid1, Mode=OneWay}" />
                     <Label x:Name="labelNombreT" Content="Nombre del tipo de producto" HorizontalAlignment="Left" Margin="300,66,0,0" VerticalAlignment="Top" Foreground="#00363a" FontWeight="Bold" FontFamily="Tahoma"/>
                     <TextBox x:Name="TextNombreTipo" TabIndex="1" materialDesign:HintAssist.Hint="Nombre" BorderBrush="#00363a" materialDesign:HintAssist.Foreground="#00363a" Height="30" Margin="518,60,129,410" Text="{Binding SelectedItem.NombreTP, ElementName=dataGrid1, Mode=OneWay}" />
-                    <Label x:Name="labelDescripcion" Content="Descripcion" HorizontalAlignment="Left" Margin="32,100,0,0" VerticalAlignment="Top" Foreground="#00363a" FontWeight="Bold" FontFamily="Tahoma"/>
-                    <TextBox x:Name="TextDescripcion" TabIndex="2" materialDesign:HintAssist.Hint="Descripcion" BorderBrush="#00363a" materialDesign:HintAssist.Foreground="#00363a" Height="30" Margin="128,95,618,375" Text="{Binding SelectedItem.Descripcion, ElementName=dataGrid1, Mode=OneWay}" />
 
-                    <Button x:Name="buttonGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="255,134,0,0" VerticalAlignment="Top" Width="87" Background="#00363a" BorderBrush="#00363a" Click="ButtonGuardar_Click"/>
-                    <Button x:Name="buttonCancelar" Content="Cacelar" HorizontalAlignment="Left" Margin="365,134,0,0" VerticalAlignment="Top" Width="87" Background="#00363a" BorderBrush="#00363a"/>
+                    <Button x:Name="buttonGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="345,134,0,0" VerticalAlignment="Top" Width="88" Background="#00363a" BorderBrush="#00363a" Click="ButtonGuardar_Click"/>
+                    <Button x:Name="buttonCancelar" Content="Cacelar" HorizontalAlignment="Left" Margin="556,134,0,0" VerticalAlignment="Top" Width="86" Background="#00363a" BorderBrush="#00363a" Click="ButtonCancelar_Click"/>
 
                     <Label x:Name="labelBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="40,234,0,0" VerticalAlignment="Top" RenderTransformOrigin="-7.158,-1.923" Width="50" Foreground="#00363a" FontWeight="Bold" FontFamily="Tahoma" Height="28"/>
                     <TextBox x:Name="textBoxBuscar" HorizontalAlignment="Left" Height="28"  VerticalAlignment="Top" Width="166" Margin="102,231,0,0" materialDesign:HintAssist.Hint="Ingrese nombre" BorderBrush="#00363a" materialDesign:HintAssist.Foreground="#00363a"/>
                     <Button x:Name="buttonBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="181,280,0,0" VerticalAlignment="Top" Width="87" Background="#00363a" BorderBrush="#00363a" Click="ButtonBuscar_Click"/>
-                    <Button x:Name="buttonActualizar" Content="Actualizar" HorizontalAlignment="Left" Margin="569,134,0,0" VerticalAlignment="Top" Width="96" Background="#00363a" BorderBrush="#00363a" Click="ButtonActualizar_Click"/>
-                    <Button x:Name="buttonListar" Content="Listar" HorizontalAlignment="Left" Margin="405,192,0,0" VerticalAlignment="Top" Width="87" Background="#00363a" BorderBrush="#00363a" Click="ButtonListar_Click"/>
+                    <Button x:Name="buttonActualizar" Content="Actualizar" HorizontalAlignment="Left" Margin="775,134,0,0" VerticalAlignment="Top" Width="96" Background="#00363a" BorderBrush="#00363a" Click="ButtonActualizar_Click" IsEnabled="False"/>
+                    <Button x:Name="buttonListar" Content="Listar" HorizontalAlignment="Left" Margin="386,197,0,0" VerticalAlignment="Top" Width="87" Background="#00363a" BorderBrush="#00363a" Click="ButtonListar_Click"/>
 
 
 
-                    <DataGrid x:Name="dataGrid1" ItemsSource="{Binding TipoPCollection}" Background="#4bacb8" HorizontalAlignment="Left" Height="222" Margin="470,234,0,0" VerticalAlignment="Top" Width="468" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" BorderBrush="#006064" Foreground="White"/>
+                    <DataGrid x:Name="dataGrid1" ItemsSource="{Binding TipoPCollection}" Background="#4bacb8" HorizontalAlignment="Left" Height="234" Margin="470,234,0,0" VerticalAlignment="Top" Width="482" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" BorderBrush="#006064" Foreground="White"/>
 
                 </Grid>
 

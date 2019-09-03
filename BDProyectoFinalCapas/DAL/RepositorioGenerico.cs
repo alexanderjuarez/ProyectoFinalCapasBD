@@ -29,7 +29,7 @@ namespace DAL
         {
             string mensaje = "";
             if (NuevaEntidad == null)
-                mensaje = "Erro: datos vacios";
+                mensaje = "Error: datos vacios";
             else
             {
                 using (contexto = new ProyectoBDEntities())
@@ -37,7 +37,7 @@ namespace DAL
                     var dbSet = contexto.Set<T>();
                     dbSet.Add(NuevaEntidad);
                     contexto.SaveChanges();
-                    mensaje = "Se ha gravado el nuevo registro";
+                    mensaje = "Se ha grabado el nuevo registro";
                 }
             }
             return mensaje;
