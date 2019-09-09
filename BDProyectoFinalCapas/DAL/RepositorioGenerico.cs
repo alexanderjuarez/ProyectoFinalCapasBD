@@ -14,12 +14,14 @@ namespace DAL
    public class RepositorioGenerico<T> : IRepositorioGenerico<T> where T : class
     {
         ProyectoBDEntities contexto;
+       
 
         public IQueryable<T> ListarTodo()
         {
             IQueryable<T> respuesta;
             using (contexto = new ProyectoBDEntities())
             {
+               
                 respuesta = contexto.Set<T>().ToList().AsQueryable();
             }
             return respuesta;
@@ -65,13 +67,30 @@ namespace DAL
 
         public IQueryable<T> ListarTodoConFiltro(Expression<Func<T, bool>> filtro)
         {
+
             IQueryable<T> respuesta;
             using (contexto = new ProyectoBDEntities())
             {
                 DbQuery<T> query = contexto.Set<T>();
-                respuesta = query.Where(filtro).ToList().AsQueryable();
+                respuesta = query.Where(filtro).ToList().AsQueryable();   
             }
             return respuesta;
+        
         }// fin del metodo ListarTodoConFiltro
+
+
+        public IQueryable<T> GetAll()
+        {
+            IQueryable<T> respuesta;
+            using (contexto = new ProyectoBDEntities())
+            {
+                var p = 
+                respuesta = contexto.Set<T>().ToList().AsQueryable();
+            }
+            return respuesta;
+        }
+
+
+
     }
 }

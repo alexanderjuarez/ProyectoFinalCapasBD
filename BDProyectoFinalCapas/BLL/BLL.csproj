@@ -49,8 +49,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassCliente.cs" />
+    <Compile Include="ClassLogin.cs" />
+    <Compile Include="ClassPresentacion.cs" />
+    <Compile Include="ClassProducto.cs" />
     <Compile Include="ClassProveedor.cs" />
     <Compile Include="ClassTipoP.cs" />
+    <Compile Include="ClassUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

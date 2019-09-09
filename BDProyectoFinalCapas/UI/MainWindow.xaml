@@ -27,6 +27,7 @@
             <Grid>
                 <materialDesign:ColorZone Mode="PrimaryDark" Background="#006064">
                     <StackPanel HorizontalAlignment="Right">
+                        <materialDesign:PackIcon Kind="CloseBox" Height="30" Width="30"/>
                         <Button x:Name="ButtonCerrar" Width="30" Height="30"  Background="#00363a" Padding="0" Click="ButtonCerrar_Click" BorderBrush="#00363a"></Button>
                     </StackPanel>
                 </materialDesign:ColorZone>
@@ -47,16 +48,19 @@
             <StackPanel Orientation="Vertical" Margin="40 20 40 0">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Account" Foreground="{Binding ElementName=TextBoxUsuario, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4" Height="38" Width="35"/>
-                    <TextBox x:Name="TextBoxUsuario" Width="300" materialDesign:HintAssist.Hint="Usuario" materialDesign:HintAssist.IsFloating="True" BorderBrush="#00363a" materialDesign:HintAssist.Foreground="#00363a" />
+                    <TextBox x:Name="TextBoxUsuario" Width="300" materialDesign:HintAssist.Hint="Usuario" materialDesign:HintAssist.IsFloating="True" BorderBrush="#00363a" materialDesign:HintAssist.Foreground="#00363a" Foreground="Black"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="0 40 0 0">
                     <materialDesign:PackIcon Kind="Key" Foreground="{Binding ElementName=TextBoxClave, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4" Height="38" Width="35"/>
-                    <PasswordBox x:Name="TextBoxClave" Width="300" materialDesign:HintAssist.Hint="Contraseña" materialDesign:HintAssist.IsFloating="True" BorderBrush="#00363a" materialDesign:HintAssist.Foreground="#00363a"
+                    <PasswordBox x:Name="TextBoxClave" Width="300" materialDesign:HintAssist.Hint="Contraseña" materialDesign:HintAssist.IsFloating="True" BorderBrush="#00363a" materialDesign:HintAssist.Foreground="#00363a" Foreground="Black"
                              />
                 </StackPanel>
 
-                <StackPanel>
+                <StackPanel Height="136">
+
+                    <ComboBox x:Name="comboBoxUsuario" VerticalAlignment="Stretch"  SelectedValuePath="tlID" DisplayMemberPath="nombreTipoL" Foreground="Black" Margin="216,0,10,0"/>
+
                     <Button 
                         Content="Entrar" Width="90" HorizontalAlignment="Right" Margin="0 70 0 0" Background="#00363a" BorderBrush="#00363a" Click="Button_Click"/>
                 </StackPanel>

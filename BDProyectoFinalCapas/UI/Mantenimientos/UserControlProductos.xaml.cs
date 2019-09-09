@@ -37,6 +37,13 @@ namespace UI.Mantenimientos
             comboTipo.ItemsSource = Lg.MostrarTodo();
             comboTipo.DisplayMemberPath = "NombreTP";
             comboTipo.SelectedValuePath = "tipopID";
+
+            ClassPresentacion Lgc = new ClassPresentacion();
+            comboPresentacion.ItemsSource = Lgc.MostrarTodo();
+            comboPresentacion.DisplayMemberPath = "NombrePres";
+            comboPresentacion.SelectedValuePath = "PresentacionID";
+
+
         }
 
         private void UserControlProductos_Load(object sender, EventArgs e)
@@ -46,7 +53,69 @@ namespace UI.Mantenimientos
 
         private void ButtonCancelar_Click(object sender, RoutedEventArgs e)
         {
-            
+            buttonActualizar.IsEnabled = false;
+            buttonGuardar.IsEnabled = true;
+        }
+
+        private void ButtonGuardar_Click(object sender, RoutedEventArgs e)
+        {
+            ClassProducto Logica = new ClassProducto();
+            string resp;
+            resp = Logica.NuevoProducto(TextNombreProduc.Text,Convert.ToSingle(TextPrecio.Text), TextDescripcion.Text,Convert.ToSingle(TextDescuento.Text),Convert.ToInt32( TextExistencia.Text), Convert.ToInt32(comboTipo.SelectedValue), Convert.ToInt32(comboPresentacion.SelectedValue),Convert.ToInt32( comboProveedor.SelectedValue));
+            if (resp.ToUpper().Contains("ERROR"))
+                MessageBox.Show(resp, "Error al registrar el proveedor");
+            else
+            {
+                MessageBox.Show(resp);
+                /*buttonAgregar.Visibility = Visibility.Visible;
+                buttonGrabar.Visibility = Visibility.Hidden;
+                buttonListar.IsEnabled = true;
+                buttonCancelar.IsEnabled = false;*/
+            }
+        }
+
+        private void ButtonCancelar_Click_1(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void ButtonActualizar_Click(object sender, RoutedEventArgs e)
+        {
+            if (TextProductoId.Text != "")
+            {
+
+                string resp = "Datos correctamente actualizados";
+                ClassProducto Logica = new ClassProducto();
+                Producto InfoEstado = new Producto();
+                InfoEstado.productoID = Convert.ToInt32(TextProductoId.Text);
+                InfoEstado.nombreProducto = TextNombreProduc.Text;
+                InfoEstado.PrecioVenta =Convert.ToSingle(TextPrecio.Text);
+                InfoEstado.Descripcion = TextDescripcion.Text;
+                InfoEstado.descuentoProducto = Convert.ToSingle(TextDescuento.Text);
+                InfoEstado.existenciaProducto = Convert.ToInt32(TextExistencia.Text);
+                InfoEstado.tipopID = Convert.ToInt32(comboTipo.SelectedValue);
+                InfoEstado.PresentacionID = Convert.ToInt32(comboPresentacion.SelectedValue);
+                InfoEstado.proveedorID = Convert.ToInt32(comboProveedor.SelectedValue);
+                resp = Logica.ActualizarProducto(InfoEstado);
+                MessageBox.Show(resp);
+
+                /*MessageBox.Show(TextCodigo.Text);
+                 MessageBox.Show(TextNombreEstado.Text);*/
+            }
+            else
+            {
+                MessageBox.Show("Marque el registro a modificar", "Error al Editar",
+                MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
+            }
+            buttonGuardar.IsEnabled = true;
+        }
+
+        private void ButtonListar_Click(object sender, RoutedEventArgs e)
+        {
+            ClassProducto Logica = new ClassProducto();
+            dataGrid1.ItemsSource = Logica.ListarProducto();
+            buttonActualizar.IsEnabled = true;
+            buttonGuardar.IsEnabled = false;
         }
     }
 }

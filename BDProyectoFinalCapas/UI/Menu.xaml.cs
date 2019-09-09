@@ -26,7 +26,10 @@ namespace UI
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            //Application.Current.Shutdown();
+            MainWindow nuevo = new MainWindow(); //crea el nuevo formulario
+            nuevo.Show(); //enseña el nuevo formulario
+            this.Close(); //cierra el formulario actualmente abierto*
         }
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
