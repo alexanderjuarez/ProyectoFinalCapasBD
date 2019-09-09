@@ -10,16 +10,17 @@
 namespace MODELS
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class IngresoUsuarios
+    public partial class productos_Result
     {
-        public int usuarioID { get; set; }
-        public string Usuario { get; set; }
-        public string Contraseña { get; set; }
-        public Nullable<int> tlID { get; set; }
-    
-        public virtual tipoLogin tipoLogin { get; set; }
-        public virtual Empleado Empleado { get; set; }
+        public int productoID { get; set; }
+        public string nombreProducto { get; set; }
+        public double PrecioVenta { get; set; }
+        public string Descripcion { get; set; }
+        public Nullable<double> descuentoProducto { get; set; }
+        public int existenciaProducto { get; set; }
+        public string NombreTP { get; set; }
+        public string NombrePres { get; set; }
+        public string nombreProveedor { get; set; }
     }
 }

@@ -71,5 +71,11 @@ namespace BLL
                 return resp;
             }
         }// fin del metodo Actualizar
+
+        public IEnumerable Consulta1()
+        {
+            ClassTSQL Lg = new ClassTSQL();
+            return Lg.ProcedimientoTabla();
+        }
     }
 }

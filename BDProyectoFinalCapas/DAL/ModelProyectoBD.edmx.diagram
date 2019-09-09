@@ -25,6 +25,7 @@
         <AssociationConnector Association="ProyectoBDModel.Relationship2" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoBDModel.Relationship1" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoBDModel.Relationship10" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBDModel.FK_Empleado_IngresoUsuarios" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

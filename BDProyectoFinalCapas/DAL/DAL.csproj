@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassTSQL.cs" />
     <Compile Include="IRepositorioGenerico.cs" />
     <Compile Include="ModelProyectoBD.Context.cs">
       <AutoGen>True</AutoGen>

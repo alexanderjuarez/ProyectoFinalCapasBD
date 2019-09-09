@@ -12,6 +12,8 @@ namespace MODELS
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class ProyectoBDEntities : DbContext
     {
@@ -36,5 +38,10 @@ namespace MODELS
         public virtual DbSet<Proveedor> Proveedor { get; set; }
         public virtual DbSet<tipoLogin> tipoLogin { get; set; }
         public virtual DbSet<TipoP> TipoP { get; set; }
+    
+        public virtual ObjectResult<productos_Result> productos()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<productos_Result>("productos");
+        }
     }
 }

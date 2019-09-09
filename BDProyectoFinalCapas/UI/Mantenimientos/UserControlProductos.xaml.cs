@@ -55,6 +55,16 @@ namespace UI.Mantenimientos
         {
             buttonActualizar.IsEnabled = false;
             buttonGuardar.IsEnabled = true;
+            TextPresentacion.Clear();
+            TextProductoId.Clear();
+            TextNombreProduc.Clear();
+            TextExistencia.Clear();
+            TextDescripcion.Clear();
+            TextDescuento.Clear();
+            TextProveedor.Clear();
+            TextPrecio.Clear();
+            TextTipoProducto.Clear();
+
         }
 
         private void ButtonGuardar_Click(object sender, RoutedEventArgs e)
@@ -113,7 +123,7 @@ namespace UI.Mantenimientos
         private void ButtonListar_Click(object sender, RoutedEventArgs e)
         {
             ClassProducto Logica = new ClassProducto();
-            dataGrid1.ItemsSource = Logica.ListarProducto();
+            dataGrid1.ItemsSource = Logica.Consulta1();
             buttonActualizar.IsEnabled = true;
             buttonGuardar.IsEnabled = false;
         }

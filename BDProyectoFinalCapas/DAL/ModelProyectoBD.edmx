@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ProyectoBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ProyectoBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="clienteID" />
@@ -111,6 +111,18 @@
           <Property Name="tipopID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NombreTP" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Empleado_IngresoUsuarios">
+          <End Role="IngresoUsuarios" Type="Self.IngresoUsuarios" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="IngresoUsuarios">
+              <PropertyRef Name="usuarioID" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="empleadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="Relationship1">
           <End Role="TipoP" Type="Self.TipoP" Multiplicity="0..1" />
           <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
@@ -219,6 +231,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="productos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="ProyectoBDModelStoreContainer">
           <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetalleFactura" EntityType="Self.DetalleFactura" Schema="dbo" store:Type="Tables" />
@@ -231,6 +244,10 @@
           <EntitySet Name="Proveedor" EntityType="Self.Proveedor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tipoLogin" EntityType="Self.tipoLogin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoP" EntityType="Self.TipoP" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Empleado_IngresoUsuarios" Association="Self.FK_Empleado_IngresoUsuarios">
+            <End Role="IngresoUsuarios" EntitySet="IngresoUsuarios" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
           <AssociationSet Name="Relationship1" Association="Self.Relationship1">
             <End Role="TipoP" EntitySet="TipoP" />
             <End Role="Producto" EntitySet="Producto" />
@@ -268,8 +285,7 @@
             <End Role="Factura" EntitySet="Factura" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProyectoBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -318,6 +334,7 @@
           <Property Name="direccionEmpleado" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="telefonoEmpleado" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Factura" Relationship="Self.Relationship8" FromRole="Empleado" ToRole="Factura" />
+          <NavigationProperty Name="IngresoUsuarios" Relationship="ProyectoBDModel.FK_Empleado_IngresoUsuarios" FromRole="Empleado" ToRole="IngresoUsuarios" />
         </EntityType>
         <EntityType Name="Factura">
           <Key>
@@ -343,6 +360,7 @@
           <Property Name="Contraseña" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="tlID" Type="Int32" />
           <NavigationProperty Name="tipoLogin" Relationship="Self.Relationship15" FromRole="IngresoUsuarios" ToRole="tipoLogin" />
+          <NavigationProperty Name="Empleado" Relationship="ProyectoBDModel.FK_Empleado_IngresoUsuarios" FromRole="IngresoUsuarios" ToRole="Empleado" />
         </EntityType>
         <EntityType Name="Presentacion">
           <Key>
@@ -553,7 +571,35 @@
             <End Role="Proveedor" EntitySet="Proveedor" />
             <End Role="Producto" EntitySet="Producto" />
           </AssociationSet>
+          <AssociationSet Name="FK_Empleado_IngresoUsuarios" Association="ProyectoBDModel.FK_Empleado_IngresoUsuarios">
+            <End Role="IngresoUsuarios" EntitySet="IngresoUsuarios" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <FunctionImport Name="productos" ReturnType="Collection(ProyectoBDModel.productos_Result)" />
         </EntityContainer>
+        <Association Name="FK_Empleado_IngresoUsuarios">
+          <End Type="ProyectoBDModel.IngresoUsuarios" Role="IngresoUsuarios" Multiplicity="1" />
+          <End Type="ProyectoBDModel.Empleado" Role="Empleado" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="IngresoUsuarios">
+              <PropertyRef Name="usuarioID" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="empleadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="productos_Result">
+          <Property Type="Int32" Name="productoID" Nullable="false" />
+          <Property Type="String" Name="nombreProducto" Nullable="false" MaxLength="100" />
+          <Property Type="Double" Name="PrecioVenta" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="100" />
+          <Property Type="Double" Name="descuentoProducto" Nullable="true" />
+          <Property Type="Int32" Name="existenciaProducto" Nullable="false" />
+          <Property Type="String" Name="NombreTP" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="NombrePres" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="nombreProveedor" Nullable="false" MaxLength="150" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -675,6 +721,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="productos" FunctionName="ProyectoBDModel.Store.productos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoBDModel.productos_Result">
+                <ScalarProperty Name="productoID" ColumnName="productoID" />
+                <ScalarProperty Name="nombreProducto" ColumnName="nombreProducto" />
+                <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="descuentoProducto" ColumnName="descuentoProducto" />
+                <ScalarProperty Name="existenciaProducto" ColumnName="existenciaProducto" />
+                <ScalarProperty Name="NombreTP" ColumnName="NombreTP" />
+                <ScalarProperty Name="NombrePres" ColumnName="NombrePres" />
+                <ScalarProperty Name="nombreProveedor" ColumnName="nombreProveedor" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
