@@ -66,6 +66,8 @@ namespace UI
                 }
                 else { 
                     MessageBox.Show("Datos incorrectos");}
+                TextBoxUsuario.Clear();
+                TextBoxClave.Clear();
             }
 
         }

@@ -43,6 +43,10 @@ namespace UI.Mantenimientos
                 buttonGrabar.Visibility = Visibility.Hidden;
                 buttonListar.IsEnabled = true;
                 buttonCancelar.IsEnabled = false;*/
+                TextNIT.Clear();
+                TextClienteId.Clear();
+                TextNombreCliente.Clear();
+                TextApellidoCliente.Clear();
             }
         }
 
@@ -71,6 +75,10 @@ namespace UI.Mantenimientos
 
                 /*MessageBox.Show(TextCodigo.Text);
                  MessageBox.Show(TextNombreEstado.Text);*/
+                TextNIT.Clear();
+                TextClienteId.Clear();
+                TextNombreCliente.Clear();
+                TextApellidoCliente.Clear();
             }
             else
             {
