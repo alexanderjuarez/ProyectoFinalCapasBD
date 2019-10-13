@@ -41,6 +41,11 @@ namespace UI.Mantenimientos
                 buttonGrabar.Visibility = Visibility.Hidden;
                 buttonListar.IsEnabled = true;
                 buttonCancelar.IsEnabled = false;*/
+                TextProveedorId.Clear();
+                TextNombrePro.Clear();
+                TextDirProveedor.Clear();
+                TextTelProveedor.Clear();
+                TextCorreo.Clear();
             }
         }
 
@@ -62,6 +67,11 @@ namespace UI.Mantenimientos
 
                 /*MessageBox.Show(TextCodigo.Text);
                  MessageBox.Show(TextNombreEstado.Text);*/
+                TextProveedorId.Clear();
+                TextNombrePro.Clear();
+                TextDirProveedor.Clear();
+                TextTelProveedor.Clear();
+                TextCorreo.Clear();
             }
             else
             {

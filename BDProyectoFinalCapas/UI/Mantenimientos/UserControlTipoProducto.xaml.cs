@@ -40,6 +40,8 @@ namespace UI.Mantenimientos
                 buttonGrabar.Visibility = Visibility.Hidden;
                 buttonListar.IsEnabled = true;
                 buttonCancelar.IsEnabled = false;*/
+                TextTipoId.Clear();
+                TextNombreTipo.Clear();
             }
         }
 
@@ -58,6 +60,8 @@ namespace UI.Mantenimientos
 
                 /* MessageBox.Show(TextCodigo.Text);
                  MessageBox.Show(TextNombreEstado.Text);*/
+                TextTipoId.Clear();
+                TextNombreTipo.Clear();
             }
             else
             {

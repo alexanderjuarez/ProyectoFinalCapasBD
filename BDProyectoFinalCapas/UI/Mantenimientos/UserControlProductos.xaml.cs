@@ -82,6 +82,15 @@ namespace UI.Mantenimientos
                 buttonGrabar.Visibility = Visibility.Hidden;
                 buttonListar.IsEnabled = true;
                 buttonCancelar.IsEnabled = false;*/
+                TextPresentacion.Clear();
+                TextProductoId.Clear();
+                TextNombreProduc.Clear();
+                TextExistencia.Clear();
+                TextDescripcion.Clear();
+                TextDescuento.Clear();
+                TextProveedor.Clear();
+                TextPrecio.Clear();
+                TextTipoProducto.Clear();
             }
         }
 
@@ -112,6 +121,15 @@ namespace UI.Mantenimientos
 
                 /*MessageBox.Show(TextCodigo.Text);
                  MessageBox.Show(TextNombreEstado.Text);*/
+                TextPresentacion.Clear();
+                TextProductoId.Clear();
+                TextNombreProduc.Clear();
+                TextExistencia.Clear();
+                TextDescripcion.Clear();
+                TextDescuento.Clear();
+                TextProveedor.Clear();
+                TextPrecio.Clear();
+                TextTipoProducto.Clear();
             }
             else
             {
