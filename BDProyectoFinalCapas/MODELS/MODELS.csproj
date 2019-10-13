@@ -63,12 +63,18 @@
     <Compile Include="Factura.cs">
       <DependentUpon>ModelProyectoBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Facturacionxml_Result.cs">
+      <DependentUpon>ModelProyectoBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="IngresoUsuarios.cs">
       <DependentUpon>ModelProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelProyectoBD.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>ModelProyectoBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="muestra_Result.cs">
       <DependentUpon>ModelProyectoBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Presentacion.cs">

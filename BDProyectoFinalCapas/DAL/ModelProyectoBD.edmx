@@ -231,6 +231,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="descontar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="cantidad" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Descontar2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="cantidad" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Facturacionxml" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="facturaxml" Type="nvarchar" Mode="In" />
+          <Parameter Name="detallexml" Type="nvarchar" Mode="In" />
+          <Parameter Name="pagoxml" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="muestra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="xml_estructura" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="productos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="ProyectoBDModelStoreContainer">
           <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
@@ -576,6 +592,26 @@
             <End Role="Empleado" EntitySet="Empleado" />
           </AssociationSet>
           <FunctionImport Name="productos" ReturnType="Collection(ProyectoBDModel.productos_Result)" />
+          <FunctionImport Name="descontar" ReturnType="Collection(Int32)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="cantidad" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Facturacionxml" ReturnType="Collection(ProyectoBDModel.Facturacionxml_Result)">
+            <Parameter Name="facturaxml" Mode="In" Type="String" />
+            <Parameter Name="detallexml" Mode="In" Type="String" />
+            <Parameter Name="pagoxml" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="muestra" ReturnType="Collection(ProyectoBDModel.muestra_Result)">
+          <Parameter Name="xml_estructura" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="descontar1" ReturnType="Collection(Int32)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="cantidad" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Descontar2" ReturnType="Collection(Int32)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="cantidad" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <Association Name="FK_Empleado_IngresoUsuarios">
           <End Type="ProyectoBDModel.IngresoUsuarios" Role="IngresoUsuarios" Multiplicity="1" />
@@ -599,6 +635,21 @@
           <Property Type="String" Name="NombreTP" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="NombrePres" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="nombreProveedor" Nullable="false" MaxLength="150" />
+        </ComplexType>
+        <ComplexType Name="Facturacionxml_Result">
+          <Property Type="Int32" Name="facturaID" Nullable="false" />
+          <Property Type="String" Name="letraSerie" Nullable="false" MaxLength="1" />
+          <Property Type="DateTime" Name="fechaFactura" Nullable="false" />
+          <Property Type="String" Name="nombreCliente" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="nombreEmpleado" Nullable="false" MaxLength="100" />
+          <Property Type="Double" Name="totalFactura" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="muestra_Result">
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="100" />
+          <Property Type="Double" Name="precio" Nullable="true" />
+          <Property Type="Int32" Name="cantidad" Nullable="true" />
+          <Property Type="Double" Name="descuento" Nullable="true" />
+          <Property Type="Double" Name="subtotal" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -736,6 +787,31 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Facturacionxml" FunctionName="ProyectoBDModel.Store.Facturacionxml">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoBDModel.Facturacionxml_Result">
+                <ScalarProperty Name="facturaID" ColumnName="facturaID" />
+                <ScalarProperty Name="letraSerie" ColumnName="letraSerie" />
+                <ScalarProperty Name="fechaFactura" ColumnName="fechaFactura" />
+                <ScalarProperty Name="nombreCliente" ColumnName="nombreCliente" />
+                <ScalarProperty Name="nombreEmpleado" ColumnName="nombreEmpleado" />
+                <ScalarProperty Name="totalFactura" ColumnName="totalFactura" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="muestra" FunctionName="ProyectoBDModel.Store.muestra">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoBDModel.muestra_Result">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="descuento" ColumnName="descuento" />
+                <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="descontar1" FunctionName="ProyectoBDModel.Store.descontar" />
+          <FunctionImportMapping FunctionImportName="Descontar2" FunctionName="ProyectoBDModel.Store.Descontar2" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

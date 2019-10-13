@@ -28,16 +28,13 @@
 
                     <Button x:Name="buttonGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="345,134,0,0" VerticalAlignment="Top" Width="88" Background="#00363a" BorderBrush="#00363a" Click="ButtonGuardar_Click"/>
                     <Button x:Name="buttonCancelar" Content="Cacelar" HorizontalAlignment="Left" Margin="556,134,0,0" VerticalAlignment="Top" Width="86" Background="#00363a" BorderBrush="#00363a" Click="ButtonCancelar_Click"/>
-
-                    <Label x:Name="labelBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="40,234,0,0" VerticalAlignment="Top" RenderTransformOrigin="-7.158,-1.923" Width="50" Foreground="#00363a" FontWeight="Bold" FontFamily="Tahoma" Height="28"/>
-                    <TextBox x:Name="textBoxBuscar" HorizontalAlignment="Left" Height="28"  VerticalAlignment="Top" Width="166" Margin="102,231,0,0" materialDesign:HintAssist.Hint="Ingrese nombre" BorderBrush="#00363a" materialDesign:HintAssist.Foreground="#00363a"/>
-                    <Button x:Name="buttonBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="181,280,0,0" VerticalAlignment="Top" Width="87" Background="#00363a" BorderBrush="#00363a" Click="ButtonBuscar_Click"/>
+                    <Button x:Name="buttonBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="181,280,0,0" VerticalAlignment="Top" Width="87" Background="#00363a" BorderBrush="#00363a" Click="ButtonBuscar_Click" Visibility="Hidden"/>
                     <Button x:Name="buttonActualizar" Content="Actualizar" HorizontalAlignment="Left" Margin="775,134,0,0" VerticalAlignment="Top" Width="96" Background="#00363a" BorderBrush="#00363a" Click="ButtonActualizar_Click" IsEnabled="False"/>
-                    <Button x:Name="buttonListar" Content="Listar" HorizontalAlignment="Left" Margin="386,197,0,0" VerticalAlignment="Top" Width="87" Background="#00363a" BorderBrush="#00363a" Click="ButtonListar_Click"/>
+                    <Button x:Name="buttonListar" Content="Listar" HorizontalAlignment="Left" Margin="83,213,0,0" VerticalAlignment="Top" Width="87" Background="#00363a" BorderBrush="#00363a" Click="ButtonListar_Click"/>
 
 
 
-                    <DataGrid x:Name="dataGrid1" ItemsSource="{Binding TipoPCollection}" Background="#4bacb8" HorizontalAlignment="Left" Height="234" Margin="470,234,0,0" VerticalAlignment="Top" Width="482" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" BorderBrush="#006064" Foreground="White"/>
+                    <DataGrid x:Name="dataGrid1" ItemsSource="{Binding TipoPCollection}" Background="#4bacb8" HorizontalAlignment="Left" Height="234" Margin="228,234,0,0" VerticalAlignment="Top" Width="590" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" BorderBrush="#006064" Foreground="White"/>
 
                 </Grid>
 

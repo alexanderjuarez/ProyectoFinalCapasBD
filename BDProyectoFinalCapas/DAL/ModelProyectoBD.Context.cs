@@ -43,5 +43,70 @@ namespace MODELS
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<productos_Result>("productos");
         }
+    
+        public virtual ObjectResult<Nullable<int>> descontar(Nullable<int> id, Nullable<int> cantidad)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var cantidadParameter = cantidad.HasValue ?
+                new ObjectParameter("cantidad", cantidad) :
+                new ObjectParameter("cantidad", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("descontar", idParameter, cantidadParameter);
+        }
+    
+        public virtual ObjectResult<Facturacionxml_Result> Facturacionxml(string facturaxml, string detallexml, string pagoxml)
+        {
+            var facturaxmlParameter = facturaxml != null ?
+                new ObjectParameter("facturaxml", facturaxml) :
+                new ObjectParameter("facturaxml", typeof(string));
+    
+            var detallexmlParameter = detallexml != null ?
+                new ObjectParameter("detallexml", detallexml) :
+                new ObjectParameter("detallexml", typeof(string));
+    
+            var pagoxmlParameter = pagoxml != null ?
+                new ObjectParameter("pagoxml", pagoxml) :
+                new ObjectParameter("pagoxml", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Facturacionxml_Result>("Facturacionxml", facturaxmlParameter, detallexmlParameter, pagoxmlParameter);
+        }
+    
+        public virtual ObjectResult<muestra_Result> muestra(string xml_estructura)
+        {
+            var xml_estructuraParameter = xml_estructura != null ?
+                new ObjectParameter("xml_estructura", xml_estructura) :
+                new ObjectParameter("xml_estructura", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<muestra_Result>("muestra", xml_estructuraParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> descontar1(Nullable<int> id, Nullable<int> cantidad)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var cantidadParameter = cantidad.HasValue ?
+                new ObjectParameter("cantidad", cantidad) :
+                new ObjectParameter("cantidad", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("descontar1", idParameter, cantidadParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Descontar2(Nullable<int> id, Nullable<int> cantidad)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var cantidadParameter = cantidad.HasValue ?
+                new ObjectParameter("cantidad", cantidad) :
+                new ObjectParameter("cantidad", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Descontar2", idParameter, cantidadParameter);
+        }
     }
 }

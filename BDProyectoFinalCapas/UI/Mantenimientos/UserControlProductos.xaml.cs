@@ -13,8 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-using BLL;
 using MODELS;
+using BLL;
 
 
 namespace UI.Mantenimientos
@@ -31,6 +31,7 @@ namespace UI.Mantenimientos
             comboProveedor.ItemsSource = Logica.ListarProveedor();
             comboProveedor.DisplayMemberPath = "nombreProveedor";
             comboProveedor.SelectedValuePath = "proveedorID";
+           
     
 
             ClassTipoP Lg = new ClassTipoP();

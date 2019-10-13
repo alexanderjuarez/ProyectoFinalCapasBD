@@ -49,6 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassCliente.cs" />
+    <Compile Include="ClassConsulta.cs" />
+    <Compile Include="ClassEmpleado.cs" />
     <Compile Include="ClassLogin.cs" />
     <Compile Include="ClassPresentacion.cs" />
     <Compile Include="ClassProducto.cs" />

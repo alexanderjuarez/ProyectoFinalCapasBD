@@ -7,6 +7,8 @@ using DAL;
 using MODELS;
 using System.Collections;
 using System.Data.Entity;
+using System.Data.SqlClient;
+
 
 namespace BLL
 {
@@ -16,7 +18,7 @@ namespace BLL
         public IEnumerable ListarProducto()
         {
             RepositorioGenerico<Producto> REP = new RepositorioGenerico<Producto>();
-            var p = db.Producto.Include(pr => pr.Proveedor).Include(pr => pr.Presentacion).Include(pr => pr.TipoP);
+           // var p = db.Producto.Include(pr => pr.Proveedor).Include(pr => pr.Presentacion).Include(pr => pr.TipoP);
             return REP.ListarTodo();
         }//fin del metodo listar
 
@@ -76,6 +78,12 @@ namespace BLL
         {
             ClassTSQL Lg = new ClassTSQL();
             return Lg.ProcedimientoTabla();
+        }
+
+        public IEnumerable BuscarProductoID(int id)
+        {
+            RepositorioGenerico<Producto> REP = new RepositorioGenerico<Producto>();
+            return REP.ListarTodoConFiltro(b => b.productoID == id);
         }
     }
 }
